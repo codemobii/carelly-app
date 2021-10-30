@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, Platform } from "react-native";
 import * as ImagePickerB from "expo-image-picker";
-import { Button } from "@ui-kitten/components";
+import { Button, Icon } from "@ui-kitten/components";
 
 export default function ImagePicker() {
   const [image, setImage] = useState(null);
@@ -37,6 +37,8 @@ export default function ImagePicker() {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Button
         appearance="outline"
+        size="giant"
+        accessoryLeft={(props) => <Icon name="camera-outline" {...props} />}
         onPress={pickImage}
         style={{ marginTop: 15, width: "100%" }}
       >

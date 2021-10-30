@@ -47,24 +47,23 @@ export default function ClientTasks({ navigation, route }) {
           />
         </View>
         <Divider />
-        <TaskCard />
+        <TaskCard isTag isDue />
         <Divider />
         <TaskCard />
         <Divider />
-        <TaskCard />
+        <TaskCard isTag />
+        <Divider />
+        <TaskCard isTag />
         <Divider />
         <TaskCard />
         <Divider />
-        <TaskCard />
-        <Divider />
-        <TaskCard />
+        <TaskCard isTag isDue />
         <Divider />
         <TaskCard />
       </ScrollView>
       <View
         style={{
-          paddingTop: 20,
-          paddingHorizontal: 20,
+          padding: 20,
           backgroundColor: "#fff",
         }}
       >

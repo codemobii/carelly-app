@@ -2,6 +2,7 @@ import { Button, Divider, Text } from "@ui-kitten/components";
 import React from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native";
+import OutlineButton from "../../components/OutlineButton";
 import Layout from "../../layouts/Index";
 
 export default function ClientCareLogFood({ navigation }) {
@@ -23,21 +24,30 @@ export default function ClientCareLogFood({ navigation }) {
           </Text>
         </View>
         <Divider />
-        <View style={{ padding: 15 }}>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogFoodType")}
-            style={{ marginBottom: 15 }}
-          >
-            Meal
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogFoodType")}
-            style={{ marginBottom: 15 }}
-          >
-            Snack
-          </Button>
+        <View
+          style={{
+            padding: 15,
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogFoodType")}
+              icon={require("../../../assets/images/meal.png")}
+            >
+              Meal
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogFoodType")}
+              icon={require("../../../assets/images/snack.png")}
+            >
+              Snack
+            </OutlineButton>
+          </View>
         </View>
       </ScrollView>
     </Layout>

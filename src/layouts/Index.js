@@ -55,7 +55,7 @@ export default function Layout({
 
   return (
     <>
-      <TopNavigation
+      {/* <TopNavigation
         accessoryLeft={isBack && BackAction}
         accessoryRight={
           accessoryRight
@@ -96,7 +96,7 @@ export default function Layout({
           }
         }
       />
-      <Divider />
+      <Divider /> */}
       <LayoutB level="2" style={{ flex: 1 }}>
         {children}
       </LayoutB>

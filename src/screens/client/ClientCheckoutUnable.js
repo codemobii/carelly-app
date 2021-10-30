@@ -35,6 +35,7 @@ export default function ClientCheckoutUnable({ navigation }) {
         <View style={{ padding: 15 }}>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientCheckoutUnableAddNote")}
             style={{ marginBottom: 15 }}
           >
@@ -42,6 +43,7 @@ export default function ClientCheckoutUnable({ navigation }) {
           </Button>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientCheckoutUnableAddNote")}
             style={{ marginBottom: 15 }}
           >
@@ -49,6 +51,7 @@ export default function ClientCheckoutUnable({ navigation }) {
           </Button>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientCheckoutUnableAddNote")}
             style={{ marginBottom: 15 }}
           >

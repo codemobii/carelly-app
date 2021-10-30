@@ -41,8 +41,7 @@ export default function ClientMedicationInstruction({ navigation }) {
 
       <View
         style={{
-          paddingTop: 20,
-          paddingHorizontal: 20,
+          padding: 20,
           backgroundColor: "#fff",
         }}
       >

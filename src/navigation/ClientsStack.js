@@ -1,8 +1,9 @@
 import React from "react";
+import { Button, Icon, Text, useTheme } from "@ui-kitten/components";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SafeAreaView } from "react-native";
+import { getHeaderTitle } from "@react-navigation/elements";
 
-import { BottomNavigator } from "./BottomNavigator";
+import BottomNavigator from "./BottomNavigator";
 import Visits from "../screens/client/Visits";
 import ClientDetails from "../screens/client/ClientDetails";
 import ClientCallToActions from "../screens/client/ClientCallToActions";
@@ -51,141 +52,478 @@ import ClientCareProfileNeedAccessments from "../screens/client/ClientCareProfil
 import ClientCareProfileNDPersonalCare from "../screens/client/ClientCareProfileNDPersonalCare";
 import ClientCareProfileByCategory from "../screens/client/ClientCareProfileByCategory";
 import ClientCareProfileBCPersonalCare from "../screens/client/ClientCareProfileBCPersonalCare";
+import ClientCareProfileDocuments from "../screens/client/ClientCareProfileDocument";
+import ClientCareProfileCareCircle from "../screens/client/ClientCareProfileCareCircle";
+import ClientCareProfileDocumentViewer from "../screens/client/ClientCareProfileDocumentViewer";
+import ClientNightCheck from "../screens/client/ClientNightChecks";
+import ClientNightCheckScanner from "../screens/client/ClientNightCheckScanner";
+import ClientCareProfileCareCircleDetails from "../screens/client/ClientCareProfileCareCircleDetails";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Clients from "../screens/client/Clients";
+import { LinearGradient } from "expo-linear-gradient";
+import ClientCareProfileRiskAssessment from "../screens/client/ClientCareProfileRiskAssessment";
+import ClientCareProfileRAEnvironmental from "../screens/client/ClientCareProfileRAEnvironmental";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export default ClientsStack = () => (
-  <SafeAreaView style={{ flex: 1 }}>
-    <Navigator headerMode="none">
-      <Screen name="BottomNavigator" component={BottomNavigator} />
-      <Screen name="Visits" component={Visits} />
-      <Screen name="ClientDetails" component={ClientDetails} />
-      <Screen name="ClientCallToAction" component={ClientCallToActions} />
-      <Screen name="ClientCheckIn" component={ClientCheckIn} />
-      <Screen name="ClientCarePlan" component={ClientCarePlan} />
-      <Screen name="ClientTasks" component={ClientTasks} />
-      <Screen name="ClientVisitLog" component={ClientVisitLog} />
-      <Screen name="ClientMedication" component={ClientMedication} />
-      <Screen
+export default ClientsStack = ({ navigation }) => {
+  const theme = useTheme();
+  const Stack = createNativeStackNavigator();
+  return (
+    <Stack.Navigator
+      headerMode="none"
+      screenOptions={{
+        headerStyle: { backgroundColor: "#50CCCC" },
+        headerTintColor: "#fff",
+        headerTitleStyle: { fontWeight: "600" },
+      }}
+    >
+      <Stack.Screen
+        name="ClientStack"
+        options={{
+          title: "Clients",
+          headerRight: () => (
+            <TouchableOpacity>
+              <Icon style={{ width: 24, height: 24 }} name="bell" fill="#fff" />
+            </TouchableOpacity>
+          ),
+        }}
+        component={Clients}
+      />
+      <Stack.Screen name="Visits" component={Visits} />
+      <Stack.Screen
+        name="ClientDetails"
+        component={ClientDetails}
+        options={{
+          title: "",
+          headerRight: () => (
+            <Button
+              size="tiny"
+              style={{ borderRadius: 100 }}
+              onPress={() => navigation.navigate("ClientCareProfile")}
+              accessoryLeft={(props) => (
+                <Icon {...props} name="folder-outline" />
+              )}
+            >
+              {(evaProps) => (
+                <Text
+                  {...evaProps}
+                  category="p2"
+                  style={{
+                    color: "#fff",
+                  }}
+                >
+                  Care plan
+                </Text>
+              )}
+            </Button>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="ClientCallToAction"
+        component={ClientCallToActions}
+        options={{
+          title: "",
+          headerRight: () => (
+            <Button
+              size="tiny"
+              style={{ borderRadius: 100 }}
+              onPress={() => navigation.navigate("ClientRaiseConcern")}
+              accessoryLeft={(props) => (
+                <Icon {...props} name="alert-triangle-outline" />
+              )}
+            >
+              {(evaProps) => (
+                <Text
+                  {...evaProps}
+                  category="p2"
+                  style={{
+                    color: "#fff",
+                  }}
+                >
+                  Raise concern
+                </Text>
+              )}
+            </Button>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="ClientCheckIn"
+        component={ClientCheckIn}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCarePlan"
+        component={ClientCarePlan}
+        options={{
+          title: "Tasks",
+        }}
+      />
+      <Stack.Screen
+        name="ClientTasks"
+        component={ClientTasks}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientVisitLog"
+        component={ClientVisitLog}
+        options={{
+          title: "Care monitoring",
+        }}
+      />
+      <Stack.Screen
+        name="ClientMedication"
+        component={ClientMedication}
+        options={{
+          title: "Medications",
+        }}
+      />
+      <Stack.Screen
         name="ClientMedicationInstruction"
         component={ClientMedicationInstruction}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientDoseRecord" component={ClientDoseRecord} />
-      <Screen
+      <Stack.Screen
+        name="ClientDoseRecord"
+        component={ClientDoseRecord}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientMedicationNotTaken"
         component={ClientMedicationNotTaken}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientMedicationNotAdministered"
         component={ClientMedicationNotAdministered}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientMedicationAddNote"
         component={ClientMedicationAddNote}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCareLog" component={ClientCareLog} />
-      <Screen name="ClientCareLogDrink" component={ClientCareLogDrink} />
-      <Screen
+      <Stack.Screen
+        name="ClientCareLog"
+        component={ClientCareLog}
+        options={{
+          title: "Care monitoring",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogDrink"
+        component={ClientCareLogDrink}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareLogDrinkType"
         component={ClientCareLogDrinkType}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareLogDrinkHowMuch"
         component={ClientCareLogDrinkHowMuch}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareLogDrinkAddedList"
         component={ClientCareLogDrinkAddedList}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCareLogToilet" component={ClientCareLogToilet} />
-      <Screen
+      <Stack.Screen
+        name="ClientCareLogToilet"
+        component={ClientCareLogToilet}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareLogToiletUrine"
         component={ClientCareLogToiletUrine}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareLogToiletAddNote"
         component={ClientCareLogToiletAddNote}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareLogToiletAddedList"
         component={ClientCareLogToiletAddedList}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCareLogMood" component={ClientCareLogMood} />
-      <Screen
+      <Stack.Screen
+        name="ClientCareLogMood"
+        component={ClientCareLogMood}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareLogMoodAddNote"
         component={ClientCareLogMoodAddNote}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCareLogCovid" component={ClientCareLogCovid} />
-      <Screen
+      <Stack.Screen
+        name="ClientCareLogCovid"
+        component={ClientCareLogCovid}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareLogCovidAddNote"
         component={ClientCareLogCovidAddNote}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCareLogFood" component={ClientCareLogFood} />
-      <Screen name="ClientCareLogFoodType" component={ClientCareLogFoodType} />
-      <Screen
+      <Stack.Screen
+        name="ClientCareLogFood"
+        component={ClientCareLogFood}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogFoodType"
+        component={ClientCareLogFoodType}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareLogFoodAddedList"
         component={ClientCareLogFoodAddedList}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareLogFoodAddNote"
         component={ClientCareLogFoodAddNote}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCareLogAddNote" component={ClientCareLogAddNote} />
+      <Stack.Screen
+        name="ClientCareLogAddNote"
+        component={ClientCareLogAddNote}
+        options={{
+          title: "",
+        }}
+      />
 
-      <Screen
+      <Stack.Screen
         name="ClientLivingSkills"
         component={ClientLivingSkills}
         screenOptions={{ presentation: "modal" }}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientLivingSkillsAddNote"
         component={ClientLivingSkillsAddNote}
         screenOptions={{ presentation: "modal" }}
+        options={{
+          title: "",
+        }}
       />
 
-      <Screen name="ClientRaiseConcern" component={ClientRaiseConcern} />
-      <Screen
+      <Stack.Screen
+        name="ClientRaiseConcern"
+        component={ClientRaiseConcern}
+        options={{
+          title: "Raise concern",
+        }}
+      />
+      <Stack.Screen
         name="ClientRaiseConcernLevel"
         component={ClientRaiseConcernLevel}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientRaiseConcernWho" component={ClientRaiseConcernWho} />
-      <Screen
+      <Stack.Screen
+        name="ClientRaiseConcernWho"
+        component={ClientRaiseConcernWho}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientRaiseConcernAddNote"
         component={ClientRaiseConcernAddNote}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientRaiseConcernIncident"
         component={ClientRaiseConcernIncident}
+        options={{
+          title: "",
+        }}
       />
-      <Screen name="ClientCheckout" component={ClientCheckout} />
-      <Screen name="ClientCheckoutUnable" component={ClientCheckoutUnable} />
-      <Screen
+      <Stack.Screen
+        name="ClientCheckout"
+        component={ClientCheckout}
+        options={{
+          title: "Check out",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCheckoutUnable"
+        component={ClientCheckoutUnable}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCheckoutUnableAddNote"
         component={ClientCheckoutUnableAddNote}
       />
 
-      <Screen name="ClientCareProfile" component={ClientCareProfile} />
-      <Screen name="ClientCareProfileInfo" component={ClientCareProfileInfo} />
-      <Screen
+      <Stack.Screen
+        name="ClientCareProfile"
+        component={ClientCareProfile}
+        options={{
+          title: "Care plan",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareProfileInfo"
+        component={ClientCareProfileInfo}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareProfileAbout"
         component={ClientCareProfileAbout}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareProfileNeedAccessments"
         component={ClientCareProfileNeedAccessments}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareProfileNDPersonalCare"
         component={ClientCareProfileNDPersonalCare}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareProfileByCategory"
         component={ClientCareProfileByCategory}
+        options={{
+          title: "",
+        }}
       />
-      <Screen
+      <Stack.Screen
         name="ClientCareProfileBCPersonalCare"
         component={ClientCareProfileBCPersonalCare}
+        options={{
+          title: "",
+        }}
       />
-    </Navigator>
-  </SafeAreaView>
-);
+      <Stack.Screen
+        name="ClientCareProfileDocuments"
+        component={ClientCareProfileDocuments}
+        options={{
+          title: "Documents",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareProfileDocumentViewer"
+        component={ClientCareProfileDocumentViewer}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareProfileCareCircle"
+        component={ClientCareProfileCareCircle}
+        options={{
+          title: "Care circle",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareProfileCareCircleDetails"
+        component={ClientCareProfileCareCircleDetails}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareProfileRiskAssessment"
+        component={ClientCareProfileRiskAssessment}
+        options={{
+          title: "Risk assessment",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareProfileRAEnvironmental"
+        component={ClientCareProfileRAEnvironmental}
+        options={{
+          title: "",
+        }}
+      />
+
+      <Stack.Screen
+        name="ClientNightCheckScanner"
+        component={ClientNightCheckScanner}
+        options={{
+          title: "Night check",
+        }}
+      />
+      <Stack.Screen
+        name="ClientNightCheck"
+        component={ClientNightCheck}
+        options={{
+          title: "",
+        }}
+      />
+    </Stack.Navigator>
+  );
+};

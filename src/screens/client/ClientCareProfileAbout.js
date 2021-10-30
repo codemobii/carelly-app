@@ -4,6 +4,7 @@ import { Image, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native";
 import Avatar from "../../components/Avatar";
 import ClientInfoCard from "../../components/ClientInfoCard";
+import SectionTitle from "../../components/SectionTitle";
 import Layout from "../../layouts/Index";
 
 export default function ClientCareProfileAbout({ navigation }) {
@@ -13,16 +14,14 @@ export default function ClientCareProfileAbout({ navigation }) {
   const doneIcon = (props) => <Icon {...props} name="checkmark" />;
 
   return (
-    <Layout title="Visit log" isBack navigation={navigation}>
+    <Layout title="Client profile" isBack navigation={navigation}>
       <ScrollView style={{ flex: 1 }}>
-        <Text style={{ padding: 15 }} category="s1">
-          Profile
-        </Text>
+        <SectionTitle title="Profile" icon="person-outline" />
 
         <ClientInfoCard title="First name" description="Client" />
 
         <Divider />
-        <ClientInfoCard title="Last name" description="Walsh" />
+        <ClientInfoCard title="Last name" description="Client" />
 
         <Divider />
         <ClientInfoCard title="Preferred name" description="Client" />
@@ -31,18 +30,16 @@ export default function ClientCareProfileAbout({ navigation }) {
         <ClientInfoCard title="Preferred pronoun" description="He/Him" />
 
         <Divider />
-        <ClientInfoCard title="Date of birtu" description="1982-12-12" />
+        <ClientInfoCard title="Date of birth" description="1982-12-12" />
 
-        <Text style={{ padding: 15 }} category="s1">
-          Contact details
-        </Text>
+        <SectionTitle title="Contact details" icon="phone-call-outline" />
 
         <ClientInfoCard title="Phone number" description="0909877212" />
 
         <Divider />
         <ClientInfoCard
           title="Address"
-          description="No 21, Somewhere town, somewhere"
+          description="No 21, Marks St. Festac, Lagos"
         />
 
         <Divider />
@@ -51,15 +48,11 @@ export default function ClientCareProfileAbout({ navigation }) {
           description="GitHub Universe is coming October 27 and 28. From product deep dives to interactive roundtables, you’ll gather the tips, tools, and connections to help you do the best work of your life."
         />
 
-        <Text style={{ padding: 15 }} category="s1">
-          Sexuality
-        </Text>
+        <SectionTitle title="Sexuality" icon="people-outline" />
 
         <ClientInfoCard title="Gender" description="Male" />
 
-        <Text style={{ padding: 15 }} category="s1">
-          Preferences
-        </Text>
+        <SectionTitle title="Preferences" icon="info-outline" />
 
         <ClientInfoCard
           title="Dislikes"
@@ -89,9 +82,7 @@ From product deep dives to interactive roundtables, you’ll gather the tips, to
           description="No preferences"
         />
 
-        <Text style={{ padding: 15 }} category="s1">
-          Health details
-        </Text>
+        <SectionTitle title="Health details" icon="activity-outline" />
 
         <ClientInfoCard
           title="Medical history"
@@ -107,9 +98,10 @@ From product deep dives to interactive roundtables, you’ll gather the tips, to
           description={`We provide Client's medicines support`}
         />
 
-        <Text style={{ padding: 15 }} category="s1">
-          Allegies and intolerances
-        </Text>
+        <SectionTitle
+          title="Allegies and intolerances"
+          icon="thermometer-plus-outline"
+        />
 
         <ClientInfoCard
           title=""

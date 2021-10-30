@@ -83,11 +83,11 @@ export default function ClientCareProfile({ navigation }) {
         />
         <Divider />
         <ListItem
-          title="Need accessments"
+          title="Need assessments"
           accessoryRight={moreIcon}
           onPress={() =>
             navigation.navigate("ClientCareProfileNeedAccessments", {
-              title: "Need accessments",
+              title: "Need assessments",
             })
           }
         />
@@ -99,21 +99,21 @@ export default function ClientCareProfile({ navigation }) {
         />
         <Divider />
         <ListItem
-          title="Risk accessments"
+          title="Risk assessments"
           accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcern")}
+          onPress={() => navigation.navigate("ClientCareProfileRiskAssessment")}
         />
         <Divider />
         <ListItem
           title="Documents"
           accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcern")}
+          onPress={() => navigation.navigate("ClientCareProfileDocuments")}
         />
         <Divider />
         <ListItem
           title="Care circle"
           accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcern")}
+          onPress={() => navigation.navigate("ClientCareProfileCareCircle")}
         />
       </ScrollView>
     </Layout>

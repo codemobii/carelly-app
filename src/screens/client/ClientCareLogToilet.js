@@ -11,6 +11,7 @@ import { View } from "react-native";
 import { ScrollView } from "react-native";
 import ClientCard from "../../components/ClientCard";
 import Input from "../../components/Input";
+import OutlineButton from "../../components/OutlineButton";
 import Layout from "../../layouts/Index";
 
 export default function ClientCareLogToilet({ navigation }) {
@@ -32,35 +33,46 @@ export default function ClientCareLogToilet({ navigation }) {
           </Text>
         </View>
         <Divider />
-        <View style={{ padding: 15 }}>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
-            style={{ marginBottom: 15 }}
-          >
-            Toilet visit
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
-            style={{ marginBottom: 15 }}
-          >
-            Catheter
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
-            style={{ marginBottom: 15 }}
-          >
-            Incontinence pad
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
-            style={{ marginBottom: 15 }}
-          >
-            Stoma bag
-          </Button>
+        <View
+          style={{
+            padding: 15,
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
+              icon={require("../../../assets/images/toilet.png")}
+            >
+              Toilet visits
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
+              icon={require("../../../assets/images/catheter.png")}
+            >
+              Catheter
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
+              icon={require("../../../assets/images/pad.png")}
+            >
+              Incontinence pad
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogToiletUrine")}
+              icon={require("../../../assets/images/bag.png")}
+            >
+              Stoma bag
+            </OutlineButton>
+          </View>
         </View>
       </ScrollView>
     </Layout>

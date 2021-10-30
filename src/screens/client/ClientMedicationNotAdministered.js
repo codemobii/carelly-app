@@ -35,6 +35,7 @@ export default function ClientMedicationNotAdministered({ navigation }) {
         <View style={{ padding: 15 }}>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientMedicationAddNote")}
             style={{ marginBottom: 15 }}
           >
@@ -42,6 +43,7 @@ export default function ClientMedicationNotAdministered({ navigation }) {
           </Button>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientMedicationAddNote")}
             style={{ marginBottom: 15 }}
           >
@@ -49,18 +51,31 @@ export default function ClientMedicationNotAdministered({ navigation }) {
           </Button>
           <Button
             appearance="outline"
+            size="giant"
             style={{ marginBottom: 15 }}
             onPress={() => navigation.navigate("ClientMedicationAddNote")}
           >
             Nausea and vomiting
           </Button>
-          <Button appearance="outline" style={{ marginBottom: 15 }}>
+          <Button
+            appearance="outline"
+            size="giant"
+            style={{ marginBottom: 15 }}
+          >
             Missing medication
           </Button>
-          <Button appearance="outline" style={{ marginBottom: 15 }}>
+          <Button
+            appearance="outline"
+            size="giant"
+            style={{ marginBottom: 15 }}
+          >
             Medication error
           </Button>
-          <Button appearance="outline" style={{ marginBottom: 15 }}>
+          <Button
+            appearance="outline"
+            size="giant"
+            style={{ marginBottom: 15 }}
+          >
             Other
           </Button>
         </View>

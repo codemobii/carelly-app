@@ -33,20 +33,33 @@ export default function ClientDoseRecord({ navigation }) {
         </View>
         <Divider />
         <View style={{ padding: 15 }}>
-          <Button appearance="outline" style={{ marginBottom: 15 }}>
+          <Button
+            appearance="outline"
+            size="giant"
+            style={{ marginBottom: 15 }}
+          >
             Fully taken
           </Button>
-          <Button appearance="outline" style={{ marginBottom: 15 }}>
+          <Button
+            appearance="outline"
+            size="giant"
+            style={{ marginBottom: 15 }}
+          >
             Partially taken
           </Button>
           <Button
             appearance="outline"
+            size="giant"
             style={{ marginBottom: 15 }}
             onPress={() => navigation.navigate("ClientMedicationNotTaken")}
           >
             Not taken
           </Button>
-          <Button appearance="outline" style={{ marginBottom: 15 }}>
+          <Button
+            appearance="outline"
+            size="giant"
+            style={{ marginBottom: 15 }}
+          >
             Not observed
           </Button>
         </View>

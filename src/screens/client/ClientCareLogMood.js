@@ -11,6 +11,7 @@ import { View } from "react-native";
 import { ScrollView } from "react-native";
 import ClientCard from "../../components/ClientCard";
 import Input from "../../components/Input";
+import OutlineButton from "../../components/OutlineButton";
 import Layout from "../../layouts/Index";
 
 export default function ClientCareLogMood({ navigation }) {
@@ -32,35 +33,46 @@ export default function ClientCareLogMood({ navigation }) {
           </Text>
         </View>
         <Divider />
-        <View style={{ padding: 15 }}>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
-            style={{ marginBottom: 15 }}
-          >
-            Happy
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
-            style={{ marginBottom: 15 }}
-          >
-            Okay
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
-            style={{ marginBottom: 15 }}
-          >
-            Sad
-          </Button>
-          <Button
-            appearance="outline"
-            onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
-            style={{ marginBottom: 15 }}
-          >
-            Bord
-          </Button>
+        <View
+          style={{
+            padding: 15,
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
+              icon={require("../../../assets/images/happy.png")}
+            >
+              Happy
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
+              icon={require("../../../assets/images/mood.png")}
+            >
+              Okay
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
+              icon={require("../../../assets/images/sad.png")}
+            >
+              Sad
+            </OutlineButton>
+          </View>
+          <View style={{ width: "48%" }}>
+            <OutlineButton
+              onPress={() => navigation.navigate("ClientCareLogMoodAddNote")}
+              icon={require("../../../assets/images/bored.png")}
+            >
+              Bored
+            </OutlineButton>
+          </View>
         </View>
       </ScrollView>
     </Layout>

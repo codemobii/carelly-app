@@ -47,6 +47,12 @@ export default function ProfileMain({ navigation }) {
         />
         <Divider />
         <ProfileInfoCard
+          label="Job role"
+          info="Health Care Assistant"
+          icon="briefcase-outline"
+        />
+        <Divider />
+        <ProfileInfoCard
           label="Phone number"
           info="091310909090"
           icon="phone-outline"

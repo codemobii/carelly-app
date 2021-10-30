@@ -41,6 +41,7 @@ export default function ClientCallToActions({ navigation }) {
         <ListItem
           title="Checked in 2:12pm"
           accessoryRight={doneIcon}
+          accessoryLeft={(props) => <Icon {...props} name="log-in-outline" />}
           onPress={() => navigation.navigate("ClientCheckIn")}
         />
         <Divider />
@@ -48,6 +49,9 @@ export default function ClientCallToActions({ navigation }) {
           title="Tasks"
           description="12 tasks scheduled today"
           accessoryRight={moreIcon}
+          accessoryLeft={(props) => (
+            <Icon {...props} name="checkmark-circle-outline" />
+          )}
           onPress={() => navigation.navigate("ClientCarePlan")}
         />
         <Divider />
@@ -55,30 +59,46 @@ export default function ClientCallToActions({ navigation }) {
           title="Medication"
           description="8 scheduled today"
           accessoryRight={moreIcon}
+          accessoryLeft={(props) => (
+            <Icon {...props} name="thermometer-plus-outline" />
+          )}
           onPress={() => navigation.navigate("ClientMedication")}
         />
         <Divider />
         <ListItem
           title="Care monitoring"
           accessoryRight={moreIcon}
+          accessoryLeft={(props) => <Icon {...props} name="monitor-outline" />}
           onPress={() => navigation.navigate("ClientCareLog")}
+        />
+        <Divider />
+        <ListItem
+          title="Night checks"
+          accessoryRight={moreIcon}
+          accessoryLeft={(props) => <Icon {...props} name="moon-outline" />}
+          onPress={() => navigation.navigate("ClientNightCheckScanner")}
         />
         <Divider />
         <ListItem
           title="Care plan"
           accessoryRight={moreIcon}
+          accessoryLeft={(props) => <Icon {...props} name="calendar-outline" />}
           onPress={() => navigation.navigate("ClientCareProfile")}
         />
-        <Divider />
+        {/* <Divider />
         <ListItem
           title="Raise concern"
           accessoryRight={moreIcon}
+          accessoryLeft={(props) => (
+            <Icon {...props} name="alert-triangle-outline" />
+          )}
           onPress={() => navigation.navigate("ClientRaiseConcern")}
-        />
+        /> */}
         <Divider />
         <ListItem
           title="Check out"
           accessoryRight={moreIcon}
+          accessoryLeft={(props) => <Icon {...props} name="log-out-outline" />}
           onPress={() => {
             Alert.alert("Are you sure you want to check-out?", "", [
               {
@@ -97,7 +117,7 @@ export default function ClientCallToActions({ navigation }) {
 
       <View
         style={{
-          paddingTop: 20,
+          paddingVertical: 20,
           paddingHorizontal: 20,
           backgroundColor: "#fff",
         }}

@@ -59,7 +59,7 @@ export default function Onboarding({ navigation }) {
             navigation.navigate("SignIn");
           }}
         >
-          Begin the day
+          Get Started
         </Button>
       </View>
     </Layout>

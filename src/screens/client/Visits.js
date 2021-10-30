@@ -21,14 +21,20 @@ export default function Visits({ navigation }) {
   );
 
   const renderItem = ({ item, index }) => (
-    <>
+    <View key={index}>
       <ListItem
+        onPress={() => navigation.navigate("ClientVisitLog")}
         title={(evaProps) => (
           <Text {...evaProps} style={{ marginBottom: 5, marginLeft: 8 }}>
-            You visited {item?.first_name}
+            {item?.first_name + " " + item?.last_name}
           </Text>
         )}
-        description={new Date().toLocaleDateString()}
+        description={(evaProps) => (
+          <>
+            <Text {...evaProps}>{new Date().toLocaleDateString()}</Text>
+            <Text {...evaProps}>Visited by John Chimaobi</Text>
+          </>
+        )}
         accessoryLeft={() => renderItemIcon({ image: item?.image })}
         accessoryRight={renderItemAccessory}
         style={{
@@ -38,7 +44,7 @@ export default function Visits({ navigation }) {
           borderRadius: 6,
         }}
       />
-    </>
+    </View>
   );
 
   return (

@@ -35,6 +35,7 @@ export default function ClientCareLogFoodType({ navigation }) {
         <View style={{ padding: 15 }}>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientCareLogFoodAddedList")}
             style={{ marginBottom: 15 }}
           >
@@ -42,6 +43,7 @@ export default function ClientCareLogFoodType({ navigation }) {
           </Button>
           <Button
             appearance="outline"
+            size="giant"
             onPress={() => navigation.navigate("ClientCareLogFoodAddedList")}
             style={{ marginBottom: 15 }}
           >

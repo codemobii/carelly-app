@@ -11,6 +11,7 @@ import { View } from "react-native";
 import { ScrollView } from "react-native";
 import ClientCard from "../../components/ClientCard";
 import Input from "../../components/Input";
+import OutlineButton from "../../components/OutlineButton";
 import Layout from "../../layouts/Index";
 
 export default function ClientCareLogCovid({ navigation }) {
@@ -33,36 +34,30 @@ export default function ClientCareLogCovid({ navigation }) {
         </View>
         <Divider />
         <View style={{ padding: 15 }}>
-          <Button
-            appearance="outline"
+          <OutlineButton
             onPress={() => navigation.navigate("ClientCareLogCovidAddNote")}
-            style={{ marginBottom: 15 }}
+            icon={require("../../../assets/images/hightemperature.png")}
           >
             High temperature
-          </Button>
-          <Button
-            appearance="outline"
+          </OutlineButton>
+          <OutlineButton
             onPress={() => navigation.navigate("ClientCareLogCovidAddNote")}
-            style={{ marginBottom: 15 }}
+            icon={require("../../../assets/images/cough.png")}
           >
             Continuous cough
-          </Button>
-          <Button
-            appearance="outline"
+          </OutlineButton>
+          <OutlineButton
             onPress={() => navigation.navigate("ClientCareLogCovidAddNote")}
-            style={{ marginBottom: 15 }}
+            icon={require("../../../assets/images/smell.png")}
           >
-            <Text style={{ textAlign: "center" }}>
-              Loss or change to your sense of smell or taste
-            </Text>
-          </Button>
-          <Button
-            appearance="outline"
+            Loss or change to your sense of smell or taste
+          </OutlineButton>
+          <OutlineButton
             onPress={() => navigation.navigate("ClientCareLogCovidAddNote")}
-            style={{ marginBottom: 15 }}
+            icon={require("../../../assets/images/normaltemperature.png")}
           >
             Normal body temperature, no concern
-          </Button>
+          </OutlineButton>
         </View>
       </ScrollView>
     </Layout>

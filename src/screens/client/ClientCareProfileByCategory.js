@@ -10,7 +10,14 @@ export default function ClientCareProfileByCategory({ navigation }) {
   const theme = useTheme();
 
   const moreIcon = (props) => <Icon {...props} name="arrow-ios-forward" />;
-  const doneIcon = (props) => <Icon {...props} name="checkmark" />;
+  const doneIcon = (props) => (
+    <Icon
+      {...props}
+      name="checkmark-circle-2"
+      fill={theme["color-success-default"]}
+    />
+  );
+  const undoneIcon = (props) => <Icon {...props} name="minus-circle" />;
 
   return (
     <Layout title="Care plan by category" isBack navigation={navigation}>
@@ -18,42 +25,49 @@ export default function ClientCareProfileByCategory({ navigation }) {
         <ListItem
           title="Personal care"
           accessoryRight={moreIcon}
+          accessoryLeft={doneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
         <Divider />
         <ListItem
           title="Everyday activities"
           accessoryRight={moreIcon}
+          accessoryLeft={doneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
         <Divider />
         <ListItem
           title="Administrative"
           accessoryRight={moreIcon}
+          accessoryLeft={doneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
         <Divider />
         <ListItem
           title="Medical"
           accessoryRight={moreIcon}
+          accessoryLeft={doneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
         <Divider />
         <ListItem
           title="Social support"
           accessoryRight={moreIcon}
+          accessoryLeft={doneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
         <Divider />
         <ListItem
           title="Environmental"
           accessoryRight={moreIcon}
+          accessoryLeft={undoneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
         <Divider />
         <ListItem
           title="Psychological"
           accessoryRight={moreIcon}
+          accessoryLeft={undoneIcon}
           onPress={() => navigation.navigate("ClientCareProfileBCPersonalCare")}
         />
       </ScrollView>
