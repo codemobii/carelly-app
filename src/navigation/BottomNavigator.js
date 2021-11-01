@@ -1,13 +1,12 @@
 import React from "react";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-import Dashboard from "../screens/client/Dashboard";
-import Clients from "../screens/client/Clients";
 import ProfileMain from "../screens/profile/Index";
 
 import SvgUri from "react-native-svg-uri";
-import { useTheme } from "@ui-kitten/components";
+import { Icon, useTheme } from "@ui-kitten/components";
 import { LinearGradient } from "expo-linear-gradient";
 import ClientsStack from "./ClientsStack";
 import VisitsStack from "./VisitsStack";

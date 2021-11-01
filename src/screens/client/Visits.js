@@ -31,7 +31,25 @@ export default function Visits({ navigation }) {
         )}
         description={(evaProps) => (
           <>
-            <Text {...evaProps}>{new Date().toLocaleDateString()}</Text>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Text {...evaProps}>{new Date().toLocaleDateString()}</Text>
+              <View
+                style={{
+                  borderWidth: 1,
+                  borderColor: "#eee",
+                  borderRadius: 7,
+                  padding: 4,
+                  paddingHorizontal: 8,
+                }}
+              >
+                <Text
+                  category="label"
+                  style={{ color: theme["color-warning-700"] }}
+                >
+                  Handover
+                </Text>
+              </View>
+            </View>
             <Text {...evaProps}>Visited by John Chimaobi</Text>
           </>
         )}

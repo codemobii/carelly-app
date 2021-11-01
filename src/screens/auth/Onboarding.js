@@ -50,7 +50,7 @@ export default function Onboarding({ navigation }) {
         category="p1"
         style={{ textAlign: "center", fontSize: 22, marginTop: 50 }}
       >
-        Accomplish your caring goal easily and carelly!
+        Health care delivery and monitory
       </Text>
 
       <View style={{ marginTop: 50, width: "100%" }}>
