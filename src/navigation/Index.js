@@ -4,6 +4,7 @@ import * as SecureStore from "expo-secure-store";
 import AuthStack from "./AuthStack";
 import ClientsStack from "./ClientsStack";
 import BottomNavigator from "./BottomNavigator";
+import UserStack from "./UserStack";
 
 export const AuthContext = React.createContext();
 
@@ -85,7 +86,7 @@ export default function Navigation({ navigation }) {
   return (
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
-        {state.userToken == null ? <AuthStack /> : <BottomNavigator />}
+        {state.userToken == null ? <AuthStack /> : <UserStack />}
       </NavigationContainer>
     </AuthContext.Provider>
   );

@@ -64,6 +64,17 @@ import { LinearGradient } from "expo-linear-gradient";
 import ClientCareProfileRiskAssessment from "../screens/client/ClientCareProfileRiskAssessment";
 import ClientCareProfileRAEnvironmental from "../screens/client/ClientCareProfileRAEnvironmental";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { View } from "react-native";
+import ClientRaiseConcernIncidentWho from "../screens/client/ClientRaiseConcernIncidentWho";
+import ClientMakeNote from "../screens/client/ClientMakeNote";
+import ClientNoteList from "../screens/client/ClientNoteList";
+import ClientMakeNoteEdit from "../screens/client/ClientMakeNoteEdit";
+import ClientCareLogPhysicalHealth from "../screens/client/ClientCareLogPhsyicalHealth";
+import ClientCareLogMentalHealth from "../screens/client/ClientCareLogMentalHealth";
+import ClientCareLogWeight from "../screens/client/ClientCareLogWeight";
+import ClientCareLogBehaviour from "../screens/client/ClientCareLogBehaviour";
+import ClientCareLogPresentation from "../screens/client/ClientCareLogPresentation";
+import ClientCareLogSocial from "../screens/client/ClientCareLogSocial";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -84,8 +95,23 @@ export default ClientsStack = ({ navigation }) => {
         options={{
           title: "Clients",
           headerRight: () => (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Notifications")}
+            >
               <Icon style={{ width: 24, height: 24 }} name="bell" fill="#fff" />
+              <View
+                style={{
+                  paddingVertical: 3,
+                  paddingHorizontal: 8,
+                  backgroundColor: "red",
+                  borderRadius: 100,
+                  position: "absolute",
+                  top: -8,
+                  right: -8,
+                }}
+              >
+                <Text style={{ fontSize: 12, color: "#fff" }}>2</Text>
+              </View>
             </TouchableOpacity>
           ),
         }}
@@ -333,8 +359,50 @@ export default ClientsStack = ({ navigation }) => {
         }}
       />
       <Stack.Screen
+        name="ClientCareLogPhysicalHealth"
+        component={ClientCareLogPhysicalHealth}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogMentalHealth"
+        component={ClientCareLogMentalHealth}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogWeight"
+        component={ClientCareLogWeight}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientCareLogFoodAddNote"
         component={ClientCareLogFoodAddNote}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogSocial"
+        component={ClientCareLogSocial}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogPresentation"
+        component={ClientCareLogPresentation}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCareLogBehaviour"
+        component={ClientCareLogBehaviour}
         options={{
           title: "",
         }}
@@ -393,8 +461,36 @@ export default ClientsStack = ({ navigation }) => {
         }}
       />
       <Stack.Screen
+        name="ClientRaiseConcernIncidentWho"
+        component={ClientRaiseConcernIncidentWho}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
         name="ClientRaiseConcernIncident"
         component={ClientRaiseConcernIncident}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientNoteList"
+        component={ClientNoteList}
+        options={{
+          title: "",
+        }}
+      />
+      <Stack.Screen
+        name="ClientMakeNote"
+        component={ClientMakeNote}
+        options={{
+          title: "Make a note",
+        }}
+      />
+      <Stack.Screen
+        name="ClientMakeNoteEdit"
+        component={ClientMakeNoteEdit}
         options={{
           title: "",
         }}

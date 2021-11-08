@@ -17,10 +17,10 @@ import MedicationDoseCard from "../../components/MedicationDoseCard";
 import TaskCard from "../../components/TaskCard";
 import Layout from "../../layouts/Index";
 
-export default function ClientRaiseConcern({ navigation, route }) {
+export default function ClientRaiseConcernIncidentWho({ navigation, route }) {
   const theme = useTheme();
 
-  const moreIcon = (props) => <Icon {...props} name="arrow-ios-forward" />;
+  const checkBox = (props) => <CheckBox {...props} />;
 
   return (
     <Layout title="Raise concern" isBack navigation={navigation}>
@@ -33,7 +33,7 @@ export default function ClientRaiseConcern({ navigation, route }) {
           }}
         >
           <Text style={{}} category="s1">
-            What type of concern do you want to raise?
+            Who should see this concern?
           </Text>
           <Text style={{ marginTop: 5 }} category="p2">
             Select from the options below.
@@ -41,35 +41,30 @@ export default function ClientRaiseConcern({ navigation, route }) {
         </View>
         <Divider />
         <ListItem
-          title="Accident"
-          accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcernIncidentWho")}
+          title="Private"
+          description="Only care managers will see this concern."
+          accessoryLeft={checkBox}
         />
         <Divider />
         <ListItem
-          title="Incident"
-          accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcernIncidentWho")}
-        />
-        <Divider />
-        <ListItem
-          title="Medication"
-          accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcernLevel")}
-        />
-        <Divider />
-        <ListItem
-          title="Skin integrity"
-          accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcernLevel")}
-        />
-        <Divider />
-        <ListItem
-          title="Other"
-          accessoryRight={moreIcon}
-          onPress={() => navigation.navigate("ClientRaiseConcernLevel")}
+          title="Public"
+          description="Care managers, family members and other members will see this concern."
+          accessoryLeft={checkBox}
         />
       </ScrollView>
+
+      <View
+        style={{
+          padding: 20,
+          backgroundColor: "#fff",
+        }}
+      >
+        <Button
+          onPress={() => navigation.navigate("ClientRaiseConcernIncident")}
+        >
+          Next
+        </Button>
+      </View>
     </Layout>
   );
 }

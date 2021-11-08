@@ -85,6 +85,14 @@ export default function ClientCallToActions({ navigation }) {
           accessoryLeft={(props) => <Icon {...props} name="calendar-outline" />}
           onPress={() => navigation.navigate("ClientCareProfile")}
         />
+        <Divider />
+        <ListItem
+          title="Team notes"
+          description="No notes added"
+          accessoryRight={moreIcon}
+          accessoryLeft={(props) => <Icon {...props} name="edit-2-outline" />}
+          onPress={() => navigation.navigate("ClientNoteList")}
+        />
         {/* <Divider />
         <ListItem
           title="Raise concern"

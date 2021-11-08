@@ -1,5 +1,4 @@
 import {
-  Button,
   Divider,
   Input,
   ListItem,
@@ -9,6 +8,7 @@ import {
 import React from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native";
+import Button from "../../components/Button";
 import ImagePicker from "../../components/ImagePicker";
 import Layout from "../../layouts/Index";
 

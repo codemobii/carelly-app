@@ -10,6 +10,7 @@ import MessageBoard from "../screens/messaging/MessageBoard";
 import MessageBoardProfile from "../screens/messaging/MessageBoardProfile";
 import NewDirectMessage from "../screens/messaging/NewDirectMessage";
 import NewGroupChat from "../screens/messaging/NewGroupChat";
+import { View } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -30,8 +31,23 @@ export default MessagesStack = ({ navigation }) => {
         options={{
           title: "Messages",
           headerRight: () => (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Notifications")}
+            >
               <Icon style={{ width: 24, height: 24 }} name="bell" fill="#fff" />
+              <View
+                style={{
+                  paddingVertical: 3,
+                  paddingHorizontal: 8,
+                  backgroundColor: "red",
+                  borderRadius: 100,
+                  position: "absolute",
+                  top: -8,
+                  right: -8,
+                }}
+              >
+                <Text style={{ fontSize: 12, color: "#fff" }}>2</Text>
+              </View>
             </TouchableOpacity>
           ),
         }}

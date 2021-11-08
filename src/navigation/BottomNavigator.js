@@ -6,15 +6,15 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import ProfileMain from "../screens/profile/Index";
 
 import SvgUri from "react-native-svg-uri";
-import { Icon, useTheme } from "@ui-kitten/components";
-import { LinearGradient } from "expo-linear-gradient";
+import { Icon, Text, useTheme } from "@ui-kitten/components";
 import ClientsStack from "./ClientsStack";
 import VisitsStack from "./VisitsStack";
 import MessagesStack from "./MessagesStack";
+import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomNavigator() {
+export default function BottomNavigator({ navigation }) {
   const theme = useTheme();
   return (
     <Tab.Navigator
@@ -78,8 +78,24 @@ export default function BottomNavigator() {
         component={ProfileMain}
         options={{
           headerRight: () => (
-            <TouchableOpacity>
+            <TouchableOpacity
+              style={{ marginRight: 15 }}
+              onPress={() => navigation.navigate("Notifications")}
+            >
               <Icon style={{ width: 24, height: 24 }} name="bell" fill="#fff" />
+              <View
+                style={{
+                  paddingVertical: 3,
+                  paddingHorizontal: 8,
+                  backgroundColor: "red",
+                  borderRadius: 100,
+                  position: "absolute",
+                  top: -8,
+                  right: -8,
+                }}
+              >
+                <Text style={{ fontSize: 12, color: "#fff" }}>2</Text>
+              </View>
             </TouchableOpacity>
           ),
         }}

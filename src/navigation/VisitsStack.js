@@ -8,6 +8,7 @@ import Visits from "../screens/client/Visits";
 import ClientVisitLog from "../screens/client/ClientVisitLog";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Dashboard from "../screens/client/Dashboard";
+import { View } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -28,8 +29,24 @@ export default ClientsStack = ({ navigation }) => {
         options={{
           title: "Home",
           headerRight: () => (
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Notifications")}
+              style={{ position: "relative" }}
+            >
               <Icon style={{ width: 24, height: 24 }} name="bell" fill="#fff" />
+              <View
+                style={{
+                  paddingVertical: 3,
+                  paddingHorizontal: 8,
+                  backgroundColor: "red",
+                  borderRadius: 100,
+                  position: "absolute",
+                  top: -8,
+                  right: -8,
+                }}
+              >
+                <Text style={{ fontSize: 12, color: "#fff" }}>2</Text>
+              </View>
             </TouchableOpacity>
           ),
         }}

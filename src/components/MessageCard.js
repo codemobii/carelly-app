@@ -16,9 +16,10 @@ export default function MessageCard({
       style={{
         flexDirection: "row",
         alignItems: "center",
-        padding: 6,
+        paddingVertical: 3,
+        paddingHorizontal: 9,
         backgroundColor: "red",
-        borderRadius: 6,
+        borderRadius: 100,
       }}
     >
       <Text style={{ fontSize: 14, color: "#fff" }}>{mCount}</Text>

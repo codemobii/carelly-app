@@ -95,7 +95,7 @@ export default function ClientCareLog({ navigation }) {
               source={require("../../../assets/images/physical.png")}
             />
           )}
-          onPress={() => navigation.navigate("ClientCareLogAddNote")}
+          onPress={() => navigation.navigate("ClientCareLogPhysicalHealth")}
         />
         <Divider />
         <ListItem
@@ -137,7 +137,7 @@ export default function ClientCareLog({ navigation }) {
               source={require("../../../assets/images/mental.png")}
             />
           )}
-          onPress={() => navigation.navigate("ClientCareLogAddNote")}
+          onPress={() => navigation.navigate("ClientCareLogMentalHealth")}
         />
         <Divider />
         <ListItem
@@ -151,7 +151,7 @@ export default function ClientCareLog({ navigation }) {
               source={require("../../../assets/images/weight.png")}
             />
           )}
-          onPress={() => navigation.navigate("ClientCareLogAddNote")}
+          onPress={() => navigation.navigate("ClientCareLogWeight")}
         />
         <ListItem
           title="Living skills"
@@ -165,6 +165,46 @@ export default function ClientCareLog({ navigation }) {
             />
           )}
           onPress={() => navigation.navigate("ClientLivingSkills")}
+        />
+        <ListItem
+          title="Behaviour"
+          description="Not reported"
+          accessoryRight={moreIcon}
+          accessoryLeft={(props) => (
+            <Image
+              {...props}
+              style={styles.avatar}
+              source={require("../../../assets/images/behaviour.png")}
+            />
+          )}
+          onPress={() => navigation.navigate("ClientCareLogBehaviour")}
+        />
+
+        <ListItem
+          title="Presentation"
+          description="Not reported"
+          accessoryRight={moreIcon}
+          accessoryLeft={(props) => (
+            <Image
+              {...props}
+              style={styles.avatar}
+              source={require("../../../assets/images/presentation.png")}
+            />
+          )}
+          onPress={() => navigation.navigate("ClientCareLogPresentation")}
+        />
+        <ListItem
+          title="Activities and social interaction"
+          description="Not reported"
+          accessoryRight={moreIcon}
+          accessoryLeft={(props) => (
+            <Image
+              {...props}
+              style={styles.avatar}
+              source={require("../../../assets/images/social.png")}
+            />
+          )}
+          onPress={() => navigation.navigate("ClientCareLogSocial")}
         />
       </ScrollView>
       <View
