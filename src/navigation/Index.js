@@ -2,11 +2,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
 import * as SecureStore from "expo-secure-store";
 import AuthStack from "./AuthStack";
-import ClientsStack from "./ClientsStack";
-import BottomNavigator from "./BottomNavigator";
 import UserStack from "./UserStack";
+import usePost from "../utils/PostRequest";
 
 export const AuthContext = React.createContext();
+export const LoadingContext = React.createContext();
 
 export default function Navigation({ navigation }) {
   const [state, dispatch] = React.useReducer(
@@ -38,6 +38,9 @@ export default function Navigation({ navigation }) {
       userToken: null,
     }
   );
+  const [loading, setLoading] = React.useState(false);
+
+  const { Post } = usePost();
 
   React.useEffect(() => {
     // Fetch the token from storage then navigate to our appropriate place
@@ -49,11 +52,6 @@ export default function Navigation({ navigation }) {
       } catch (e) {
         // Restoring token failed
       }
-
-      // After restoring token, we may need to validate it in production apps
-
-      // This will switch to the App screen or Auth screen and this loading
-      // screen will be unmounted and thrown away.
       dispatch({ type: "RESTORE_TOKEN", token: userToken });
     };
 
@@ -71,23 +69,17 @@ export default function Navigation({ navigation }) {
         dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
       },
       signOut: () => dispatch({ type: "SIGN_OUT" }),
-      signUp: async (data) => {
-        // In a production app, we need to send user data to server and get a token
-        // We will also need to handle errors if sign up failed
-        // After getting token, we need to persist the token using `SecureStore`
-        // In the example, we'll use a dummy token
-
-        dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
-      },
     }),
     []
   );
 
   return (
     <AuthContext.Provider value={authContext}>
-      <NavigationContainer>
-        {state.userToken == null ? <AuthStack /> : <UserStack />}
-      </NavigationContainer>
+      <LoadingContext.Provider value={loading}>
+        <NavigationContainer>
+          {state.userToken == null ? <AuthStack /> : <UserStack />}
+        </NavigationContainer>
+      </LoadingContext.Provider>
     </AuthContext.Provider>
   );
 }

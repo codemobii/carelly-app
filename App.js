@@ -4,6 +4,7 @@ import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+import Toast from "react-native-toast-message";
 import Navigation from "./src/navigation/Index";
 import {
   useFonts,
@@ -30,6 +31,8 @@ export default function App() {
         <ApplicationProvider {...eva} theme={{ ...eva.light, ...theme }}>
           <StatusBar style="light" />
           <Navigation />
+
+          <Toast />
         </ApplicationProvider>
       </>
     );

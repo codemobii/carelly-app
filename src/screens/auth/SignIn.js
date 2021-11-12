@@ -4,28 +4,45 @@ import { View } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import Input from "../../components/Input";
 import AuthLayout from "../../layouts/AuthLayout";
-import { AuthContext } from "../../navigation/Index";
+import usePost from "../../utils/PostRequest";
 
 export default function SignIn({ navigation }) {
   const [isPassword, setIsPassword] = useState(false);
-  const { signIn } = React.useContext(AuthContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { Post } = usePost();
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    Post("/api/v1/auth/company/login", { email, password }, () => {
+      setLoading(false);
+    });
+  };
+
   return (
     <AuthLayout
       navigation={navigation}
       title="Sign in"
       detail="Welcome! fill in your details & continue"
       buttonTitle="Continue"
-      submit={() => navigation.navigate("Verify")}
+      submit={handleSubmit}
+      loading={loading}
     >
       <Input
         label="Email address"
         placeholder="your@email.com"
         renderIcon={(props) => <Icon {...props} name="email" />}
+        value={email}
+        onChange={(e) => setEmail(e)}
       />
       <Input
         label="Password"
         placeholder="Mypassword1!@"
-        isPassword={true}
+        isPassword={isPassword}
+        value={password}
+        onChange={(e) => setPassword(e)}
         renderIcon={(props) => (
           <TouchableWithoutFeedback
             onPress={() => {

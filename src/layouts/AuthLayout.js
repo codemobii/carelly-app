@@ -24,6 +24,7 @@ export default function AuthLayout({
   detail = "Hey you're back, fill in your details to get back in",
   navigation = () => {},
   submit = () => {},
+  loading = false,
 }) {
   const BackIcon = (props) => (
     <TouchableOpacity
@@ -100,7 +101,9 @@ export default function AuthLayout({
             {children}
 
             <View style={{ paddingVertical: 30 }}>
-              <Button onPress={submit}>{buttonTitle}</Button>
+              <Button onPress={submit} loading={loading}>
+                {buttonTitle}
+              </Button>
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
