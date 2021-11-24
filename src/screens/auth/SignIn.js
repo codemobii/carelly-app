@@ -7,7 +7,7 @@ import AuthLayout from "../../layouts/AuthLayout";
 import usePost from "../../utils/PostRequest";
 
 export default function SignIn({ navigation }) {
-  const [isPassword, setIsPassword] = useState(false);
+  const [isPassword, setIsPassword] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,9 +16,17 @@ export default function SignIn({ navigation }) {
 
   const handleSubmit = async () => {
     setLoading(true);
-    Post("/api/v1/auth/company/login", { email, password }, () => {
-      setLoading(false);
-    });
+    Post(
+      "/employee/login",
+      { email, password },
+      () => {
+        setLoading(false);
+        navigation.navigate("Verify");
+      },
+      () => {
+        setLoading(false);
+      }
+    );
   };
 
   return (

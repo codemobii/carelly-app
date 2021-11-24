@@ -75,6 +75,9 @@ import ClientCareLogWeight from "../screens/client/ClientCareLogWeight";
 import ClientCareLogBehaviour from "../screens/client/ClientCareLogBehaviour";
 import ClientCareLogPresentation from "../screens/client/ClientCareLogPresentation";
 import ClientCareLogSocial from "../screens/client/ClientCareLogSocial";
+import ClientCheckinDay from "../screens/client/ClientCheckinDay";
+import ClientCheckinNight from "../screens/client/ClientCheckinNight";
+import ClientChecks from "../screens/client/ClientChecks";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -180,7 +183,28 @@ export default ClientsStack = ({ navigation }) => {
         name="ClientCheckIn"
         component={ClientCheckIn}
         options={{
-          title: "",
+          title: "Check in",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCheckinDay"
+        component={ClientCheckinDay}
+        options={{
+          title: "Day check in",
+        }}
+      />
+      <Stack.Screen
+        name="ClientCheckinNight"
+        component={ClientCheckinNight}
+        options={{
+          title: "Night check in",
+        }}
+      />
+      <Stack.Screen
+        name="ClientChecks"
+        component={ClientChecks}
+        options={{
+          title: "Checks",
         }}
       />
       <Stack.Screen
@@ -610,7 +634,7 @@ export default ClientsStack = ({ navigation }) => {
         name="ClientNightCheckScanner"
         component={ClientNightCheckScanner}
         options={{
-          title: "Night check",
+          title: "",
         }}
       />
       <Stack.Screen

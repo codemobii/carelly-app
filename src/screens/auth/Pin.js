@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PincodeInput from "react-native-pincode-input";
 import AuthLayout from "../../layouts/AuthLayout";
 import { AuthContext } from "../../navigation/Index";
+import * as SecureStore from "expo-secure-store";
 
 export default function Pin(props) {
   const [pin, setPin] = useState("");
@@ -24,7 +25,7 @@ export default function Pin(props) {
       title="Create a PIN"
       detail="Create your Carelly App PIN for in app authorizations."
       buttonTitle="Continue"
-      submit={signIn({ e: "" })}
+      submit={() => signIn({ e: "" })}
     >
       <PincodeInput
         ref={(pincodeInput) => (pincodeInput = pincodeInput)}

@@ -11,11 +11,15 @@ export default function ProfileInfoCard({
 
   return (
     <ListItem
-      title={(props) => (
-        <Text category="p2" style={{ marginLeft: 8 }}>
-          {label}
-        </Text>
-      )}
+      title={
+        label
+          ? (props) => (
+              <Text category="p2" style={{ marginLeft: 8 }}>
+                {label}
+              </Text>
+            )
+          : ""
+      }
       description={(props) => (
         <Text category="s2" style={{ marginLeft: 8, marginTop: 3 }}>
           {info}

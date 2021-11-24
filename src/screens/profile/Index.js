@@ -89,6 +89,13 @@ export default function ProfileMain({ navigation }) {
         />
 
         <Text style={{ padding: 15 }} category="s1">
+          Security
+        </Text>
+        <ProfileInfoCard label="" info="Authentication PIN" />
+        <Divider />
+        <ProfileInfoCard label="" info="Sign out" />
+
+        <Text style={{ padding: 15 }} category="s1">
           Versions
         </Text>
         <ProfileInfoCard label="Application" info="1.0.0 - bpsls" />

@@ -6,6 +6,7 @@ import Toast from "react-native-toast-message";
 
 const usePost = () => {
   const [message, setMessage] = useState("");
+  const [response, setResponse] = useState({});
 
   const Post = async (
     url,
@@ -13,7 +14,9 @@ const usePost = () => {
     onDone = () => {
       console.log("done");
     },
-    onError = () => {}
+    onError = () => {
+      console.log("error");
+    }
   ) => {
     const user = await SecureStore.getItemAsync("userToken");
 
@@ -36,20 +39,21 @@ const usePost = () => {
           text1: "Success",
           text2: res?.data?.message || "Successful!",
         });
+        onDone();
+        setResponse(res.data);
+        console.log(res.data);
       })
       .catch((er) => {
         const msg =
           get(er, "response.data.message" || "response.message") || er.message;
         setMessage(msg);
-
+        onError();
         Toast.show({
           type: "error",
           text1: "Error!",
           text2: msg,
         });
-      })
-      .finally(() => {
-        onDone();
+        console.log(er);
       });
   };
 
@@ -81,6 +85,7 @@ const usePost = () => {
           text1: "Success",
           text2: res?.data?.message || "Successful!",
         });
+        setResponse(res.data);
       })
       .catch((er) => {
         const msg =
@@ -97,7 +102,7 @@ const usePost = () => {
       });
   };
 
-  return { Post, Put, message };
+  return { Post, Put, message, response };
 };
 
 export default usePost;

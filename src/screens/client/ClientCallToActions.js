@@ -39,7 +39,7 @@ export default function ClientCallToActions({ navigation }) {
         </View>
         <Divider />
         <ListItem
-          title="Checked in 2:12pm"
+          title="Check in"
           accessoryRight={doneIcon}
           accessoryLeft={(props) => <Icon {...props} name="log-in-outline" />}
           onPress={() => navigation.navigate("ClientCheckIn")}
@@ -66,17 +66,17 @@ export default function ClientCallToActions({ navigation }) {
         />
         <Divider />
         <ListItem
-          title="Care monitoring"
+          title="Handover"
           accessoryRight={moreIcon}
           accessoryLeft={(props) => <Icon {...props} name="monitor-outline" />}
           onPress={() => navigation.navigate("ClientCareLog")}
         />
         <Divider />
         <ListItem
-          title="Night checks"
+          title="Checks"
           accessoryRight={moreIcon}
           accessoryLeft={(props) => <Icon {...props} name="moon-outline" />}
-          onPress={() => navigation.navigate("ClientNightCheckScanner")}
+          onPress={() => navigation.navigate("ClientChecks")}
         />
         <Divider />
         <ListItem
@@ -87,7 +87,7 @@ export default function ClientCallToActions({ navigation }) {
         />
         <Divider />
         <ListItem
-          title="Team notes"
+          title="Communications"
           description="No notes added"
           accessoryRight={moreIcon}
           accessoryLeft={(props) => <Icon {...props} name="edit-2-outline" />}
