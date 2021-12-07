@@ -3,6 +3,7 @@ import * as SecureStore from "expo-secure-store";
 import get from "lodash.get";
 import { useState } from "react";
 import Toast from "react-native-toast-message";
+import { GetUser } from "../utils/useAuth";
 
 const usePost = () => {
   const [message, setMessage] = useState("");
@@ -18,12 +19,12 @@ const usePost = () => {
       console.log("error");
     }
   ) => {
-    const user = await SecureStore.getItemAsync("userToken");
+    const user = JSON.parse(await SecureStore.getItemAsync("userToken"));
 
     await axios({
       headers: {
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${user?._token}`,
+        Authorization: `Bearer ${user?.token}`,
       },
       proxy: {
         host: "104.236.174.88",
@@ -41,7 +42,6 @@ const usePost = () => {
         });
         onDone();
         setResponse(res.data);
-        console.log(res.data);
       })
       .catch((er) => {
         const msg =
@@ -69,7 +69,7 @@ const usePost = () => {
     await axios({
       headers: {
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${user?._token}`,
+        Authorization: `Bearer ${user?.token}`,
       },
       proxy: {
         host: "104.236.174.88",
@@ -103,6 +103,33 @@ const usePost = () => {
   };
 
   return { Post, Put, message, response };
+};
+
+export const fetcher = async (url) => {
+  const user = await GetUser();
+  try {
+    await axios
+      .get(`https://carelly-backend.herokuapp.com${url}`, {
+        headers: user && {
+          Authorization: `Bearer ${user?.token}`,
+        },
+      })
+      .then(
+        (response) =>
+          new Promise((resolve) => {
+            resolve(response);
+          })
+      );
+  } catch (er) {
+    const msg =
+      get(er, "response.data.message" || "response.message") || er.message;
+
+    Toast.show({
+      type: "error",
+      text1: "Error!",
+      text2: msg,
+    });
+  }
 };
 
 export default usePost;

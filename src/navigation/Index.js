@@ -61,10 +61,10 @@ export default function Navigation({ navigation }) {
   const authContext = React.useMemo(
     () => ({
       signIn: async (e) => {
-        const data = e.toString();
+        const data = JSON.stringify(e);
         await SecureStore.setItemAsync("userToken", data);
 
-        dispatch({ type: "SIGN_IN", token: data });
+        dispatch({ type: "SIGN_IN", token: e });
       },
       signOut: async () => {
         await SecureStore.deleteItemAsync("userToken");

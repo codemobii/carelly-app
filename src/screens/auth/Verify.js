@@ -5,6 +5,9 @@ import Input from "../../components/Input";
 import AuthLayout from "../../layouts/AuthLayout";
 import usePost from "../../utils/PostRequest";
 import { AuthContext } from "../../navigation/Index";
+import Toast from "react-native-toast-message";
+import axios from "axios";
+import { get } from "lodash";
 
 export default function Verify({ navigation }) {
   const [code, setCode] = useState();
@@ -15,18 +18,30 @@ export default function Verify({ navigation }) {
 
   const handleSubmit = async () => {
     setLoading(true);
-    Post(
-      "/employee/verify-code",
-      { code },
-      () => {
-        setLoading(false);
-        setCode("");
-        signIn({ e: response });
-      },
-      () => {
-        setLoading(false);
-      }
-    );
+    await axios({
+      method: "POST",
+      url: "https://carelly-backend.herokuapp.com/employee/verify-code",
+      data: { code },
+    })
+      .then((res) => {
+        Toast.show({
+          type: "success",
+          text1: "Success",
+          text2: res?.data?.message || "Successful!",
+        });
+        signIn(res.data.data);
+      })
+      .catch((er) => {
+        const msg =
+          get(er, "response.data.message" || "response.message") || er.message;
+        Toast.show({
+          type: "error",
+          text1: "Error!",
+          text2: msg,
+        });
+        console.log(er);
+      })
+      .finally(() => setLoading(false));
   };
 
   return (

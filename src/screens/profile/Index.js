@@ -1,16 +1,45 @@
 import { Divider, Icon, ListItem, Text, useTheme } from "@ui-kitten/components";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { ScrollView } from "react-native";
 import Avatar from "../../components/Avatar";
 import ProfileInfoCard from "../../components/ProfileInfoCard";
 import Layout from "../../layouts/Index";
+import { AuthContext } from "../../navigation/Index";
+import { GetPIN, GetUser } from "../../utils/useAuth";
+import * as SecureStore from "expo-secure-store";
+import { fetcher } from "../../utils/PostRequest";
 
 export default function ProfileMain({ navigation }) {
   const theme = useTheme();
+  const { signOut } = React.useContext(AuthContext);
 
-  const moreIcon = (props) => <Icon {...props} name="arrow-ios-forward" />;
-  const doneIcon = (props) => <Icon {...props} name="checkmark" />;
+  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  let isPin;
+  console.log("Check PIN", isPin);
+
+  useEffect(() => {
+    const getData = async () => {
+      const isPIN = await GetPIN();
+      const token = await GetUser();
+      setData(token.employee);
+      isPin = isPIN;
+
+      console.log(token.employee);
+
+      if (token) {
+        const user = await fetcher(`/employee/details/${token?.employee?.hid}`);
+        console.log(user);
+      } else {
+        console.log("None");
+      }
+    };
+
+    getData();
+  }, []);
 
   return (
     <Layout title="Profile" navigation={navigation}>
@@ -32,7 +61,7 @@ export default function ProfileMain({ navigation }) {
             <Avatar image="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff" />
           </View>
           <Text style={{ marginTop: 6 }} category="s1">
-            Max Philip
+            {data?.first_name + " " + data?.last_name}
           </Text>
         </View>
 
@@ -42,25 +71,25 @@ export default function ProfileMain({ navigation }) {
 
         <ProfileInfoCard
           label="Full name"
-          info="Max Philip"
+          info={data?.first_name + " " + data?.last_name}
           icon="person-outline"
         />
         <Divider />
         <ProfileInfoCard
           label="Job role"
-          info="Health Care Assistant"
+          info={data?.job_title}
           icon="briefcase-outline"
         />
         <Divider />
         <ProfileInfoCard
           label="Phone number"
-          info="091310909090"
+          info={data?.phone_number}
           icon="phone-outline"
         />
         <Divider />
         <ProfileInfoCard
           label="Email address"
-          info="your@email.com"
+          info={data?.email}
           icon="email-outline"
         />
 
@@ -91,9 +120,13 @@ export default function ProfileMain({ navigation }) {
         <Text style={{ padding: 15 }} category="s1">
           Security
         </Text>
-        <ProfileInfoCard label="" info="Authentication PIN" />
+        <ProfileInfoCard
+          label=""
+          info="Authentication PIN"
+          onPress={() => !isPin && navigation.navigate("CreatePIN")}
+        />
         <Divider />
-        <ProfileInfoCard label="" info="Sign out" />
+        <ProfileInfoCard label="" info="Sign out" onPress={signOut} />
 
         <Text style={{ padding: 15 }} category="s1">
           Versions

@@ -11,6 +11,7 @@ import ClientsStack from "./ClientsStack";
 import VisitsStack from "./VisitsStack";
 import MessagesStack from "./MessagesStack";
 import { View } from "react-native";
+import ProfileStack from "./ProfileStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -75,30 +76,8 @@ export default function BottomNavigator({ navigation }) {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileMain}
-        options={{
-          headerRight: () => (
-            <TouchableOpacity
-              style={{ marginRight: 15 }}
-              onPress={() => navigation.navigate("Notifications")}
-            >
-              <Icon style={{ width: 24, height: 24 }} name="bell" fill="#fff" />
-              <View
-                style={{
-                  paddingVertical: 3,
-                  paddingHorizontal: 8,
-                  backgroundColor: "red",
-                  borderRadius: 100,
-                  position: "absolute",
-                  top: -8,
-                  right: -8,
-                }}
-              >
-                <Text style={{ fontSize: 12, color: "#fff" }}>2</Text>
-              </View>
-            </TouchableOpacity>
-          ),
-        }}
+        component={ProfileStack}
+        options={{ headerShown: false }}
       />
     </Tab.Navigator>
   );
