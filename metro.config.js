@@ -1,11 +1,18 @@
-const MetroConfig = require("@ui-kitten/metro-config");
+const { getDefaultConfig } = require("expo/metro-config");
 
-const evaConfig = {
-  evaPackage: "@eva-design/eva",
-  // Optional, but may be useful when using mapping customization feature.
-  customMappingPath: "./mapping.json",
+const config = getDefaultConfig(__dirname);
+
+const { transformer, resolver } = config;
+
+config.transformer = {
+  ...transformer,
+  babelTransformerPath: require.resolve("react-native-svg-transformer"),
 };
 
-module.exports = MetroConfig.create(evaConfig, {
-  // Whatever was previously specified
-});
+config.resolver = {
+  ...resolver,
+  assetExts: resolver.assetExts.filter((ext) => ext !== "svg"),
+  sourceExts: [...resolver.sourceExts, "svg"],
+};
+
+module.exports = config;
